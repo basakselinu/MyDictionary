@@ -20,25 +20,32 @@ namespace MyDictionary
         public void Add(TKeys key, TValue value)
         {
             TKeys[] tempKey = keys;
-            TValue[] tempValue = values;
 
             keys = new TKeys[tempKey.Length + 1];
-            values = new TValue[tempValue.Length + 1];
 
             for (int i = 0; i < tempKey.Length; i++)
             {
                 keys[i] = tempKey[i];
+            }
+
+            keys[keys.Length - 1] = key;
+
+            TValue[] tempValue = values;
+
+            values = new TValue[tempValue.Length + 1];
+
+            for (int i = 0; i < tempValue.Length; i++)
+            {
                 values[i] = tempValue[i];
             }
 
-            keys[keys.Length - 1] = key;          
             values[keys.Length - 1] = value;
         }
         public void List()
         {
             for (int i = 0; i < keys.Length; i++)
             {
-                Console.WriteLine("Numara:{0} - İsim:{1}", keys[i], values[i]);
+                Console.WriteLine("Numara:{0} - İsim:{1}", keys[i],values[i]);
             }
         }
     }
